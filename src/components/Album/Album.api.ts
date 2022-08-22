@@ -10,9 +10,9 @@ interface AlbumDetail {
   country?: string;
 }
 
-const searchAlbum = async (title: string): Promise<AlbumDetail> => {
+const searchAlbum = async (title: string): Promise<AlbumDetail | null> => {
   const results = (await search({title: title})).results;
-  return results[0] as AlbumDetail;
+  return results.length == 0 ? null : results[0] as AlbumDetail;
 };
 
 export { searchAlbum };
