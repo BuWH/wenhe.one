@@ -1,16 +1,19 @@
-import { Client } from "disconnect";
+import { SearchResult } from '../../Discog/database';
+import {search} from '../../Discog/Discog';
 
-var Discogs = Client;
-var db = new Discogs({userToken: 'WenheBlog/0.1'}).database();
+interface AlbumDetail {
+  title?: string;
+  thumb?:string;
+  cover_image?: string;
+  style?: string[];
+  year?: string;
+  country?: string;
+}
 
-const searchAlbum = async (artist: string) => {
-  db.search({
-    artist: artist,
-    type: "master"
-  })
-  .then(res => {
-    console.log(res.results);
-  })
+const searchAlbum = async (title: string): Promise<AlbumDetail> => {
+  const results = (await search({title: title})).results;
+  return results[0] as AlbumDetail;
 };
 
-export {searchAlbum};
+export { searchAlbum };
+export type { AlbumDetail };

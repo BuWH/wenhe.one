@@ -1,7 +1,4 @@
-/// <reference path="./discogs-types.d.ts" />
-
-declare namespace DiscogsDatabaseTypes {
-  interface SearchParams {
+export interface SearchParams {
     per_page?: number;
     page?: number;
     query?: string;
@@ -22,10 +19,9 @@ declare namespace DiscogsDatabaseTypes {
     track?: string;
     submitter?: string;
     contributor?: string;
-  }
+}
 
-
-  interface Master {
+export interface Master {
     styles?: string[];
     genres?: string[];
     videos?: Video[];
@@ -46,25 +42,25 @@ declare namespace DiscogsDatabaseTypes {
     lowest_price: number | null;
     id: number;
     tracklist: MasterTrack[];
-  }
+}
 
-  interface MasterTrack {
+export interface MasterTrack {
     duration: string;
     position: string;
     type_: string;
     title: string;
     extraartists?: EntityArtist[];
-  }
+}
 
-  interface Video {
+export interface Video {
     duration: number;
     description: string;
     embed: boolean;
     uri: string;
     title: string;
-  }
+}
 
-  interface EntityArtist {
+export interface EntityArtist {
     join: string;
     name: string;
     anv: string;
@@ -72,9 +68,9 @@ declare namespace DiscogsDatabaseTypes {
     role: string;
     resource_url: string;
     id: number;
-  }
+}
 
-  interface Release {
+export interface Release {
     identifiers: Identifier[];
     series: unknown[];
     labels: Company[];
@@ -109,9 +105,9 @@ declare namespace DiscogsDatabaseTypes {
     videos?: Video[];
     master_id?: number;
     master_url?: string;
-  }
+}
 
-  interface ReleaseCommunity {
+export interface ReleaseCommunity {
     status: string;
     rating: Rating;
     want: number;
@@ -119,50 +115,50 @@ declare namespace DiscogsDatabaseTypes {
     have: number;
     submitter: Contributor | null;
     data_quality: string;
-  }
+}
 
-  interface Contributor {
+export interface Contributor {
     username: string;
     resource_url: string;
-  }
+}
 
-  interface Rating {
+export interface Rating {
     count: number;
     average: number;
-  }
+}
 
-  interface Company {
+export interface Company {
     name: string;
     entity_type: string;
     catno: string;
     resource_url: string;
     id: number;
     entity_type_name: string;
-  }
+}
 
-  interface Format {
+export interface Format {
     qty: string;
     descriptions?: string[];
     name: string;
     text?: string;
-  }
+}
 
-  interface Identifier {
+export interface Identifier {
     type: string;
     value: string;
     description?: string;
-  }
+}
 
-  interface ReleaseTrack {
+export interface ReleaseTrack {
     duration: string;
     position: string;
     type_: string;
     artists?: EntityArtist[];
     title: string;
     extraartists?: EntityArtist[];
-  }
+}
 
-  interface Artist {
+export interface Artist {
     profile: string;
     releases_url: string;
     name: string;
@@ -177,32 +173,32 @@ declare namespace DiscogsDatabaseTypes {
     data_quality: string;
     realname?: string;
     groups?: ArtistAlias[];
-  }
+}
 
-  interface ArtistAlias {
+export interface ArtistAlias {
     resource_url: string;
     id: number;
     name: string;
     active?: boolean;
-  }
+}
 
-  interface Image {
+export interface Image {
     uri: string;
     height: number;
     width: number;
     resource_url: string;
     type: "primary" | "secondary";
     uri150: string;
-  }
+}
 
-  interface Stats {
+export interface Stats {
     community: {
-      in_collection: number;
-      in_wantlist: number;
+        in_collection: number;
+        in_wantlist: number;
     };
-  }
+}
 
-  interface ArtistRelease {
+export interface ArtistRelease {
     status: string;
     stats: Stats;
     thumb: string;
@@ -216,9 +212,9 @@ declare namespace DiscogsDatabaseTypes {
     type: "release";
     id: number;
     trackinfo?: string;
-  }
+}
 
-  interface ArtistMaster {
+export interface ArtistMaster {
     stats: Stats;
     thumb: string;
     title: string;
@@ -229,47 +225,47 @@ declare namespace DiscogsDatabaseTypes {
     resource_url: string;
     type: "master";
     id: number;
-  }
+}
 
-  interface ArtistReleasesResponse {
+export interface ArtistReleasesResponse {
     pagination: DiscogsTypes.Pagination;
     releases: (ArtistRelease | ArtistMaster)[];
-  }
+}
 
-  interface MasterVersions {
+export interface MasterVersions {
     filter_facets: FilterFacet[];
     filters: Filters;
     versions: Version[];
-  }
+}
 
-  interface FilterFacet {
+export interface FilterFacet {
     allows_multiple_values: boolean;
     values: Value[];
     id: string;
     title: string;
-  }
+}
 
-  interface Value {
+export interface Value {
     count: number;
     value: string;
     title: string;
-  }
+}
 
-  interface Filters {
+export interface Filters {
     applied: Applied;
     available: Available;
-  }
+}
 
-  interface Applied { }
+export interface Applied { }
 
-  interface Available {
+export interface Available {
     country: { [key: string]: number };
     label: { [key: string]: number };
     released: { [key: string]: number };
     format: { [key: string]: number };
-  }
+}
 
-  interface Version {
+export interface Version {
     status: string;
     stats: Stats;
     thumb: string;
@@ -282,12 +278,12 @@ declare namespace DiscogsDatabaseTypes {
     catno: string;
     resource_url: string;
     id: number;
-  }
-  interface MasterVersionsResponse extends MasterVersions {
+}
+export interface MasterVersionsResponse extends MasterVersions {
     pagination: DiscogsTypes.Pagination;
-  }
+}
 
-  interface Label {
+export interface Label {
     profile?: string;
     releases_url: string;
     name: string;
@@ -298,9 +294,9 @@ declare namespace DiscogsDatabaseTypes {
     resource_url: string;
     id: number;
     data_quality: string;
-  }
+}
 
-  interface LabelRelease {
+export interface LabelRelease {
     status: string;
     artist: string;
     catno: string;
@@ -310,14 +306,14 @@ declare namespace DiscogsDatabaseTypes {
     title: string;
     year: number;
     id: number;
-  }
+}
 
-  interface LabelReleasesResponse {
+export interface LabelReleasesResponse {
     pagination: DiscogsTypes.Pagination;
     releases: LabelRelease[];
-  }
+}
 
-  interface SearchArtist {
+export interface SearchArtist {
     thumb: string;
     title: string;
     uri: string;
@@ -328,9 +324,9 @@ declare namespace DiscogsDatabaseTypes {
     type: "artist";
     id: number;
     user_data?: UserData;
-  }
+}
 
-  interface SearchLabel {
+export interface SearchLabel {
     thumb: string;
     title: string;
     uri: string;
@@ -341,9 +337,9 @@ declare namespace DiscogsDatabaseTypes {
     type: "label";
     id: number;
     user_data?: UserData;
-  }
+}
 
-  interface SearchMaster {
+export interface SearchMaster {
     style: string[];
     thumb: string;
     format: string[];
@@ -355,8 +351,8 @@ declare namespace DiscogsDatabaseTypes {
     genre: string[];
     catno: string;
     community: {
-      want: number;
-      have: number;
+        want: number;
+        have: number;
     };
     year?: string;
     cover_image: string;
@@ -366,9 +362,9 @@ declare namespace DiscogsDatabaseTypes {
     type: "master";
     id: number;
     user_data?: UserData;
-  }
+}
 
-  interface SearchRelease {
+export interface SearchRelease {
     style: string[];
     barcode: string[];
     thumb: string;
@@ -377,8 +373,8 @@ declare namespace DiscogsDatabaseTypes {
     format: string[];
     uri: string;
     community: {
-      want: number;
-      have: number;
+        want: number;
+        have: number;
     };
     label: string[];
     country: string;
@@ -393,42 +389,41 @@ declare namespace DiscogsDatabaseTypes {
     id: number;
     formats: Format[];
     user_data?: UserData;
-  }
+}
 
-  interface UserData {
+export interface UserData {
     in_collection: boolean;
     in_wantlist: boolean;
-  }
+}
 
-  interface Format {
+export interface Format {
     qty: string;
     descriptions?: string[];
     name: string;
     text?: string;
-  }
+}
 
-  type SearchResult =
+type SearchResult =
     | SearchArtist
     | SearchLabel
     | SearchMaster
     | SearchRelease;
 
-  interface SearchResponse {
+export interface SearchResponse {
     pagination: DiscogsTypes.Pagination;
     results: SearchResult[];
-  }
+}
 
-  interface ReleaseRatingByUser {
+export interface ReleaseRatingByUser {
     username: string;
     release: string;
     rating: string;
-  }
+}
 
-  interface CommunityReleaseRating {
+export interface CommunityReleaseRating {
     rating: {
-      count: number;
-      average: number;
+        count: number;
+        average: number;
     };
     release_id: number;
-  }
 }
