@@ -1,4 +1,4 @@
-import {SearchResponse, SearchParams} from './database';
+import { SearchResponse, SearchParams } from './database';
 
 export const search = async (params: SearchParams): Promise<SearchResponse> => {
     const urlParams = {
