@@ -5,7 +5,7 @@ import { presetAttributify, presetUno } from 'unocss'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: "./",
+  base: "/wenhe.one/",
   plugins: [
     react(),
     Unocss({
