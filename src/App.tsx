@@ -3,8 +3,7 @@ import AlbumSearch from './components/AlbumSearch/AlbumSearch'
 function App() {
 
   return (
-    <div>
-      <div className="border">test</div>
+    <div className='w-md border p-5'>
       <div><AlbumSearch /></div>
     </div>
   )

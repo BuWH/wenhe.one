@@ -14,7 +14,12 @@ export default defineConfig({
     Unocss({
       presets: [
         presetUno(),
-        presetIcons(),
+        presetIcons({
+          extraProperties: {
+            'display': 'inline-block',
+            'vertical-align': 'middle',
+          },
+        }),
         presetAttributify(),
         presetTypography({
           cssExtend: {

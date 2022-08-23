@@ -11,6 +11,7 @@ const AlbumSearch = () => {
       <div> Album Search </div>
       <input
         type="text"
+        content={searchContent}
         onChange={(event) => {
           setSearchContent(event.target.value);
         }}
