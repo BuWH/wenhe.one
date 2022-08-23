@@ -1,7 +1,10 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import Unocss from 'unocss/vite'
-import { presetAttributify, presetUno } from 'unocss'
+import presetAttributify from '@unocss/preset-attributify'
+import presetIcons from '@unocss/preset-icons'
+import presetUno from '@unocss/preset-uno'
+import presetTypography from '@unocss/preset-typography'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -10,8 +13,16 @@ export default defineConfig({
     react(),
     Unocss({
       presets: [
-        presetAttributify(),
         presetUno(),
+        presetIcons(),
+        presetAttributify(),
+        presetTypography({
+          cssExtend: {
+            'a': {
+              'text-decoration': 'none',
+            },
+          },
+        }),
       ],
     }),
   ]

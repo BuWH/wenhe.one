@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
-import { AlbumDetail, searchAlbum } from "./Album.api";
-const Album = () => {
+import { Album } from "./Album";
+import { AlbumDetail } from "./Album.d";
+import { searchAlbum } from "./AlbumSearch.api";
+const AlbumSearch = () => {
   const [album, setAlbum] = useState<AlbumDetail | null>(null);
   const [searchContent, setSearchContent] = useState<string>("search here");
 
@@ -26,23 +28,12 @@ const Album = () => {
         getAlbum
       </button>
       <>
-        {album != null ? (
-          <div>
-            <div> {album.albumName} </div>
-            <div>
-              <label>{album.artistName}</label>
-              {album.artistEnglishName != null && (
-                <label>{" or " + album.artistEnglishName}</label>
-              )}
-            </div>
-            <img src={album.thumb}></img>
-          </div>
-        ) : (
-          <div> no result </div>
+        {album != null && (
+          <Album album={album}/>
         )}
       </>
     </>
   );
 };
 
-export default Album;
+export default AlbumSearch;

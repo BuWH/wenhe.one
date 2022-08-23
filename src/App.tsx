@@ -1,11 +1,11 @@
-import { useState } from 'react'
-import Album from './components/Album/Album'
+import AlbumSearch from './components/AlbumSearch/AlbumSearch'
 
 function App() {
 
   return (
-    <div className="flex-row m-5">
-      <div className="flex-col m-5"><Album /></div>
+    <div>
+      <div className="border">test</div>
+      <div><AlbumSearch /></div>
     </div>
   )
 }
