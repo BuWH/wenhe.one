@@ -5,6 +5,7 @@ import { presetAttributify, presetUno } from 'unocss'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: "./",
   plugins: [
     react(),
     Unocss({

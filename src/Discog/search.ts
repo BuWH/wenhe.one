@@ -7,6 +7,6 @@ export const search = async (params: SearchParams): Promise<SearchResponse> => {
     };
     const response = await fetch('https://api.discogs.com/database/search?' + new URLSearchParams(urlParams).toString());
     const data = await response.json();
-    console.log(data as SearchResponse)
+    console.log("search result:", data as SearchResponse)
     return data;
 }
