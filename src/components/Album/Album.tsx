@@ -1,29 +1,44 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AlbumDetail, searchAlbum } from "./Album.api";
 const Album = () => {
-  const [album, setAlbum] = useState<AlbumDetail>();
+  const [album, setAlbum] = useState<AlbumDetail | null>(null);
+  const [searchContent, setSearchContent] = useState<string>("search here");
+
   return (
     <>
-      <div> Album </div>
+      <div> Album Search </div>
+      <input
+        type="text"
+        onChange={(event) => {
+          setSearchContent(event.target.value);
+        }}
+      />
       <button
         onClick={() => {
-          console.log("hello");
-          const result = searchAlbum("白银饭店").then((res) => {
+          if (searchContent == "") return;
+          searchAlbum(searchContent).then((res) => {
             if (res != null) {
               setAlbum(res);
             }
           });
         }}
       >
-        {" "}
-        getAlbum{" "}
+        getAlbum
       </button>
       <>
-        {album != null && (
+        {album != null ? (
           <div>
-            <div> {album.title} </div>
+            <div> {album.albumName} </div>
+            <div>
+              <label>{album.artistName}</label>
+              {album.artistSecondName != null && (
+                <label>{" or " + album.artistSecondName}</label>
+              )}
+            </div>
             <img src={album.thumb}></img>
           </div>
+        ) : (
+          <div> no result </div>
         )}
       </>
     </>
