@@ -31,8 +31,8 @@ const Album = () => {
             <div> {album.albumName} </div>
             <div>
               <label>{album.artistName}</label>
-              {album.artistSecondName != null && (
-                <label>{" or " + album.artistSecondName}</label>
+              {album.artistEnglishName != null && (
+                <label>{" or " + album.artistEnglishName}</label>
               )}
             </div>
             <img src={album.thumb}></img>
