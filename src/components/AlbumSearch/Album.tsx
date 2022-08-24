@@ -13,7 +13,6 @@ export const Album = (props: { album: AlbumDetail }) => {
           )}
         </div>
       </div>
-      
     </div>
   );
 }
